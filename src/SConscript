@@ -1,5 +1,5 @@
 Import("env")
 
 lenv = env.Clone()
-lenv.AppendUnique(CPPPATH=["#ext_lib/$extlib_version"])
-lenv.Program("main.c")
+lenv.AppendUnique(CPPPATH=["#3rd_party/ccur/SimWB-$simwb_version/include"])
+lenv.StaticObject(lenv.Glob('main.cpp'))

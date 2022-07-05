@@ -1,18 +1,24 @@
-Decider("MD5-timestamp")
 
-SConsignFile("sconsign/.sconsign.dblite")
+Decider("MD5-timestamp")
 
 opts = Variables(None, ARGUMENTS)
 opts.Add(
     EnumVariable(
-        "extlib_version",
-        "external library version",
+        "simwb_version",
+        "current simwb version",
         "any",
-        ["any", "2020.1","2022.1"],
+        ["any", "2018.3", "2019.3", "2020.1","2022.1"],
     )
 )
 
 env = Environment(options=opts)
-SConscript('src/SConscript', exports=["env"], variant_dir='build', duplicate=False)
-Help(opts.GenerateHelpText(env))
+env.Tool("gcc")
 
+SConsignFile("out/signatures")
+
+SConscript(
+    "src/SConscript",
+    variant_dir="out",
+    duplicate=False,
+    exports=["env"],
+)
