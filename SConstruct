@@ -7,7 +7,7 @@ opts.Add(
         "simwb_version",
         "current simwb version",
         "any",
-        ["any", "2018.3", "2019.3", "2020.1","2022.1"],
+        ["any", "2020.1","2022.1"],
     )
 )
 
